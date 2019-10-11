@@ -17,9 +17,6 @@ const AllSmurfs = ({ getSmurfs, smurfs }) => {
               <h4>
                 {smurf.name}, {smurf.height}, {smurf.age}
               </h4>
-              <div>
-                <img src={smurf.image} alt="nice smurfy image" />
-              </div>
             </div>
           );
         })}
