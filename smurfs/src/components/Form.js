@@ -13,7 +13,7 @@ export function Form({ form, changeInput, addSmurf }) {
   };
 
   return (
-    <form className="component" onSubmit={onFormSubmit}>
+    <form onSubmit={onFormSubmit}>
       <label>
         <input
           name="name"

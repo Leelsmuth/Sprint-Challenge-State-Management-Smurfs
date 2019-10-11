@@ -2,21 +2,24 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-const AllSmurfs = props => {
+const AllSmurfs = ({ getSmurfs, smurfs }) => {
   useEffect(() => {
-    props.getSmurfs();
-  }, []);
+    getSmurfs();
+  }, [getSmurfs]);
 
   return (
-    <div className="">
+    <div>
       <h2>All Smurfs</h2>
       <div>
-        {props.smurfs.map(smurf => {
+        {smurfs.map(smurf => {
           return (
-            <div className="" key={smurf.id}>
+            <div key={smurf.id}>
               <h4>
                 {smurf.name}, {smurf.height}, {smurf.age}
               </h4>
+              <div>
+                <img src={smurf.image} alt="nice smurfy image" />
+              </div>
             </div>
           );
         })}
