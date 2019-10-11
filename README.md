@@ -23,10 +23,24 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What problem does the context API help solve?
+      Ans: Context API tries to solve the problem of prop drilling. In a typical React application, data is passed top-down (parent to child) via props,but this can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+      Ans:
+      Actions: Action is an object that tells the reducer how to change the state. It must contain a type property. It can optionally contain a payload property.
+      Reducers: are functions that return some state data. The Reducers manage the way data is kept in store provided by the actions.
+      Store: An Object that holds the applications state data.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+      Ans: Application state is global, component state is local. Redux uses `stores` to hold application state. That means any component, anywhere in the app can access it (kind of like a database) so long as they hook into it.
+
+Component state however, lives within that specific component. As such, it can only be updated within that component and passed down to its children via props.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+      Ans: Redux thunk allows our reducer to look for and return to us a modified state AND it allows our action creator to retrieve a function.
+
 - [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+      Ans: At this moment, I don't have a favourite. I am probably leaning towards redux because it is still fresh in memory, but I feel the Context API is easy to set-up and use(although it has its limitations).
 
 ## Project Set Up
 
