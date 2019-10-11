@@ -34,7 +34,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
       Ans: Application state is global, component state is local. Redux uses `stores` to hold application state. That means any component, anywhere in the app can access it (kind of like a database) so long as they hook into it.
 
-Component state however, lives within that specific component. As such, it can only be updated within that component and passed down to its children via props.
+      Component state however, lives within that specific component. As such, it can only be updated within that component and passed down to its children via props.
 
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
       Ans: Redux thunk allows our reducer to look for and return to us a modified state AND it allows our action creator to retrieve a function.

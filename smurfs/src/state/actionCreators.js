@@ -1,16 +1,40 @@
 import axios from "axios";
 import * as types from "./actionTypes";
 
-export const getSmurf = () => dispatch => {
+export const getSmurfs = () => dispatch => {
   axios
-    .get("http://localhost:3333/smurfs")
-    .then(res => dispatch({ type: types.ADD_SMURF, payload: res.data }))
-    .catch(err => console.log("Error", err));
+    .get("http://localhost:3333/smurfs/")
+    .then(response => {
+      dispatch({
+        type: types.IMPORT_SMURFS,
+        payload: response.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
-export const addNewSmurf = addSmurf => dispatch => {
+export const addSmurf = newSmurf => dispatch => {
   axios
-    .post("http://localhost:3333/smurfs", addSmurf)
-    .then(res => dispatch({ type: types.ADD_SMURF, payload: res.data }))
-    .catch(err => console.log("Cannot Add Smurf", err));
+    .post("http://localhost:3333/smurfs/", newSmurf)
+    .then(response => {
+      dispatch({
+        type: types.IMPORT_SMURFS,
+        payload: response.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
+
+export function changeInput(target) {
+  return {
+    type: types.ON_INPUT_CHANGE,
+    payload: {
+      name: target.name,
+      value: target.value
+    }
+  };
+}

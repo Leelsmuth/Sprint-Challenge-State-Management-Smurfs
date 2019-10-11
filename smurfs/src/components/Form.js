@@ -1,49 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../state/actionCreators";
 
-export const NewSmurf = props => {
-  const [addSmurf, setSmurf] = useState({ name: "", age: "", height: "" });
+export function Form({ form, changeInput, addSmurf }) {
+  const onValueChange = event => {
+    changeInput(event.target);
+  };
 
-  const handleChanges = e => {
-    setSmurf({ ...addSmurf, [e.target.name]: e.target.value });
+  const onFormSubmit = event => {
+    event.preventDefault();
+    addSmurf(form);
   };
-  const handleSubmit = e => {
-    e.preventDefault();
-    props.addNewSmurf(addSmurf);
-    setSmurf({ name: "", age: "", height: "" });
-  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Add a Smurf</h1>
-      <label htmlFor="name">Name</label>
-      <input
-        name="name"
-        type="text"
-        placeholder="Enter Smurfs Name"
-        value={addSmurf.name}
-        onChange={handleChanges}
-      />
-      <input
-        name="age"
-        type="text"
-        placeholder="Enter Smurfs Age"
-        value={addSmurf.age}
-        onChange={handleChanges}
-      />
-      <input
-        name="height"
-        type="text"
-        placeholder="Enter Smurfs Height"
-        value={addSmurf.height}
-        onChange={handleChanges}
-      />
-      <button>Add a New Smurf</button>
+    <form className="component" onSubmit={onFormSubmit}>
+      <label>
+        <input
+          name="name"
+          value={form.name}
+          onChange={onValueChange}
+          placeholder="Name"
+        />
+      </label>
+
+      <label>
+        <input
+          name="height"
+          value={form.height}
+          onChange={onValueChange}
+          placeholder="Height in cm"
+        />
+      </label>
+
+      <label>
+        <input
+          name="age"
+          value={form.age}
+          onChange={onValueChange}
+          placeholder="Age"
+        />
+      </label>
+      <input type="Submit" />
     </form>
   );
-};
+}
 
 export default connect(
   state => state,
   actionCreators
-)(NewSmurf);
+)(Form);
